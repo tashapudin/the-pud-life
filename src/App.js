@@ -23,12 +23,15 @@ class App extends Component {
           progress: "4",
           color: this.colorFactory.nextColor()
         }
-      ]
+      ],
+      currentDate: currentDate()
     };
+
     this.moodSet = this.moodSet.bind(this);
     this.setSlider = this.setSlider.bind(this);
     this.journalSet = this.journalSet.bind(this);
     this.habitAdd = this.habitAdd.bind(this);
+
   }
 
   setSlider(event) {
@@ -46,7 +49,7 @@ class App extends Component {
 
   habitAdd(event) {
     const newHabit = { title: "i am new", progress: "0", color: this.colorFactory.nextColor() };
-    this.setState({ habits:[...this.state.habits, newHabit]});
+    this.setState({ habits: [...this.state.habits, newHabit] });
   }
 
   render() {
@@ -61,7 +64,7 @@ class App extends Component {
         </div>
         <div className="content">
           <div className="date">
-            <h2> 02/07/2018 </h2>
+            <h2> {this.state.currentDate} </h2>
           </div>
           <div className="moods">
             <MoodButton activeMood={this.state.activeMood} name='veryhappy' moodSet={this.moodSet} icon="mood" />
@@ -87,6 +90,23 @@ class App extends Component {
     );
     return poop;
   }
+}
+
+function currentDate() {
+  const today = new Date();
+  let dd = today.getDate(); 
+  let mm = today.getMonth() + 1; //January is 0!
+  let yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm
+  }
+
+  return dd + '/' + mm + '/' + yyyy;
 }
 
 function habitObjectToHabitElement(habitObject, i) {
