@@ -8,68 +8,45 @@ import { ColorFactory, defaultColors } from './ColorFactory.js';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '50' };
-    this.moodSet = this.moodSet.bind(this);
     this.colorFactory = new ColorFactory(defaultColors);
-    this.habits = [
-      {
-        title: "Do yoga",
-        progress: "3",
-        color: this.colorFactory.nextColor()
-      },
+    this.state = {
+      value: '50',
+      habits: [
+        {
+          title: "Do yoga",
+          progress: "3",
+          color: this.colorFactory.nextColor()
+        },
 
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      },
-
-      {
-        title: "learn to type",
-        progress: "4",
-        color: this.colorFactory.nextColor()
-      }
-    ];
+        {
+          title: "learn to type",
+          progress: "4",
+          color: this.colorFactory.nextColor()
+        }
+      ]
+    };
+    this.moodSet = this.moodSet.bind(this);
+    this.setSlider = this.setSlider.bind(this);
+    this.journalSet = this.journalSet.bind(this);
+    this.habitAdd = this.habitAdd.bind(this);
   }
 
   setSlider(event) {
     this.setState({ value: event.target.value });
-    console.log(event.target);
   }
 
   moodSet(event) {
-    this.setState({activeMood: event.currentTarget.name});
+    this.setState({ activeMood: event.currentTarget.name });
     console.log(this.state, event);
+  }
+
+  journalSet(event) {
+    this.setState({ journal: event.target.value });
+  }
+
+  habitAdd(event) {
+    const newHabit = { title: "i am new", progress: "0", color: this.colorFactory.nextColor() };
+    this.setState({ habits:[...this.state.habits, newHabit]});
   }
 
   render() {
@@ -87,21 +64,21 @@ class App extends Component {
             <h2> 02/07/2018 </h2>
           </div>
           <div className="moods">
-            <MoodButton activeMood = {this.state.activeMood} name = 'veryhappy' moodSet = {this.moodSet} icon = "mood"/>
-            <MoodButton activeMood = {this.state.activeMood} name = 'happy' moodSet = {this.moodSet} icon = "sentiment_satisfied"/>
-            <MoodButton activeMood = {this.state.activeMood} name = 'extremelyHappy' moodSet = {this.moodSet} icon = "sentiment_very_satisfied"/>
-            <MoodButton activeMood = {this.state.activeMood} name = 'extremlySad' moodSet = {this.moodSet} icon = "mood_bad"/>
-            <MoodButton activeMood = {this.state.activeMood} name = 'sad' moodSet = {this.moodSet} icon = "sentiment_dissatisfied"/>
-            <MoodButton activeMood = {this.state.activeMood} name = 'verySad' moodSet = {this.moodSet} icon = "sentiment_very_dissatisfied"/>
+            <MoodButton activeMood={this.state.activeMood} name='veryhappy' moodSet={this.moodSet} icon="mood" />
+            <MoodButton activeMood={this.state.activeMood} name='happy' moodSet={this.moodSet} icon="sentiment_satisfied" />
+            <MoodButton activeMood={this.state.activeMood} name='extremelyHappy' moodSet={this.moodSet} icon="sentiment_very_satisfied" />
+            <MoodButton activeMood={this.state.activeMood} name='extremlySad' moodSet={this.moodSet} icon="mood_bad" />
+            <MoodButton activeMood={this.state.activeMood} name='sad' moodSet={this.moodSet} icon="sentiment_dissatisfied" />
+            <MoodButton activeMood={this.state.activeMood} name='verySad' moodSet={this.moodSet} icon="sentiment_very_dissatisfied" />
           </div>
           <div className="sliderDiv">
-            <input type="range" min="0" max="100" value={this.state.value} className="slider" onChange={(e) => this.setSlider(e)} />
+            <input type="range" min="0" max="100" value={this.state.value} className="slider" onChange={this.setSlider} />
           </div>
-          <textarea className="journal" placeholder="What's up pudding?" />
+          <textarea className="journal" placeholder="What's up pudding?" value={this.state.journal} onChange={this.journalSet} />
           <div className="add">
-            <i className="material-icons">add</i>
+            <i className="material-icons" onClick={this.habitAdd}>add</i>
           </div>
-          {this.habits.map(habitObjectToHabitElement)}
+          {this.state.habits.map(habitObjectToHabitElement)}
           <div className="timeline">
             <i className="material-icons">timeline</i>
           </div>
@@ -113,11 +90,11 @@ class App extends Component {
 }
 
 function habitObjectToHabitElement(habitObject, i) {
-  return <Habit key = {i} title={habitObject.title} progress={habitObject.progress} color={habitObject.color}> </Habit>
+  return <Habit key={i} title={habitObject.title} progress={habitObject.progress} color={habitObject.color}> </Habit>
 }
 
 function MoodButton(props) {
-  return <button className={props.activeMood === props.name ? 'active' : ''} name = {props.name} onClick= {props.moodSet}> <i className="material-icons" >{props.icon}</i>  </button>
+  return <button className={props.activeMood === props.name ? 'active' : ''} name={props.name} onClick={props.moodSet}> <i className="material-icons" >{props.icon}</i>  </button>
 }
 
 export default App;
