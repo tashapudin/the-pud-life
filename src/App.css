@@ -1,28 +1,142 @@
-.App {
-  text-align: center;
+.app {
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.app .header {
+  background-color: #E3E3E3;
+  position: relative;
+  
 }
 
-.App-header {
-  background-color: #222;
+h1, h2 {
+   margin: 0;
+   font-weight: normal;
+   color: #4A4A4A;
+}
+
+h1 {
+  font-size: 45px;
+  padding: 60px 50px;
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7.5vw;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.app .date {
+  padding: 20px 0px;
+  font-size: 28px;
+}
+
+
+.app .content {
+  width: 80%;
+  margin: auto;
+}
+
+.app .content .moods i{
+  font-size: 70px;
+  border-radius: 50%;
+  background-color: #EDEDED;
+}
+
+.moods button:hover {
+  border-radius: 50%;
+  opacity: 1;
+  border-style: none;
+  outline: none;
+}
+
+.moods button{
+  border-radius: 50%;
+  border-style: none;
+  outline: none;
+  opacity: 0.5;
+
+}
+
+.moods button.active{
+  border-radius: 50%;
+  border-style: none;
+  outline: none;
+  opacity: 1;
+
+}
+
+.moods {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliderDiv {
+  width: 100%;
+}
+
+.sliderDiv .slider {
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 3px;
+  width: 100%;
+  height: 2px;
+  background-color: #979797;
+  margin: 70px;
+  margin-left: 0px;
+}
+
+.sliderDiv .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px; 
+  height: 25px; 
+  background: #4A4A4A; 
+  border-radius: 50%;
+}
+
+.journal {
+  background-color: #EDEDED;
+  width:  100%;
+  height: 130px;
+  outline: none;
+  resize: none;
+  border:  none;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+::placeholder {
+  opacity: 0.35;
+  font-size: 25px;
+  text-indent: 10px;
+}
+
+.add i {
+  font-size: 50px;
+  opacity: .5;
+  margin-left: 95%;
+  padding-top: 100px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+
+.timeline {
+  background-color: #D8D8D8;
   height: 150px;
-  padding: 20px;
-  color: white;
+  width: 150px;
+  border-radius: 50%;
+  opacity: .42;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.timeline i {
+  opacity: .42;
+  font-size: 100px
 }

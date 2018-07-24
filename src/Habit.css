@@ -1,0 +1,40 @@
+.habit {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 70px;
+  font-size: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  text-indent: 10px;
+}
+
+.habit-title {
+  flex: 1;
+}
+
+.habit-title h3 {
+  font-weight: normal;
+  margin-bottom: 14px;
+  opacity: 0.5;
+}
+
+.habit-title p {
+  margin: 0;
+  font-size: 20px;
+  text-align: right;
+  opacity:.2;
+  padding: 8px;
+}
+
+.habit .more {
+  width: 20%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.more i {
+  font-size: 100px;
+  opacity: .1;
+}
