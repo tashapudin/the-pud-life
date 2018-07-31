@@ -1,0 +1,33 @@
+.moods i{
+  font-size: 70px;
+  border-radius: 50%;
+  background-color: #EDEDED;
+}
+
+.moods button:hover {
+  border-radius: 50%;
+  opacity: 1;
+  border-style: none;
+  outline: none;
+}
+
+.moods button{
+  border-radius: 50%;
+  border-style: none;
+  outline: none;
+  opacity: 0.5;
+
+}
+
+.moods button.active{
+  border-radius: 50%;
+  border-style: none;
+  outline: none;
+  opacity: 1;
+
+}
+
+.moods {
+  display: flex;
+  justify-content: space-between;
+}
